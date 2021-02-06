@@ -1,7 +1,8 @@
 <script lang="ts">
-  import Inner from './Inner.svelte'
+  let name = 'world'
 </script>
 
 <div class="app">
-  <Inner on:message={(e) => alert(e.detail.text)} />
+  <input type="text" bind:value={name} />
+  <h1>Hello {name}</h1>
 </div>
