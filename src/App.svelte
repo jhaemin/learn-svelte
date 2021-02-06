@@ -1,17 +1,19 @@
 <script lang="ts">
-const user = { loggedIn: false }
-
-function toggle() {
-  user.loggedIn = !user.loggedIn
-}
+let cats = [
+  { id: 'J---aiyznGQ', name: 'Keyboard Cat' },
+  { id: 'z_AbfPXTKms', name: 'Maru' },
+  { id: 'OUtn3pvWmpg', name: 'Henri The Existential Cat' },
+]
 </script>
 
 <div class="app">
-  {#if user.loggedIn}
-    <button on:click={toggle}>Log out</button>
-  {:else}
-    <button on:click={toggle}>Log in</button>
-  {/if}
+  {#each cats as cat, i (cat)}
+    <li>
+      <a target="_blank" href="https://www.youtube.com/watch?v={cat.id}">
+        {i + 1}: {cat.name}
+      </a>
+    </li>
+  {/each}
 </div>
 
 <style>
