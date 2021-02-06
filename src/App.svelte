@@ -1,23 +1,17 @@
 <script lang="ts">
-let count = 0
-$: doubled = count * 2
+const user = { loggedIn: false }
 
-$: if (count * 2 >= 10) {
-  alert(`count is dangerously high! ${count}`)
-  count = 5
-}
-
-function handleClick() {
-  count += 1
+function toggle() {
+  user.loggedIn = !user.loggedIn
 }
 </script>
 
 <div class="app">
-  <button on:click={handleClick}>
-    Clicked {count}
-    {count === 1 ? 'time' : 'times'}
-  </button>
-  <p>{count} doubled is {doubled}</p>
+  {#if user.loggedIn}
+    <button on:click={toggle}>Log out</button>
+  {:else}
+    <button on:click={toggle}>Log in</button>
+  {/if}
 </div>
 
 <style>
